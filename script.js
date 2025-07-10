@@ -1,34 +1,53 @@
-const grid = document.getElementById("productGrid");
-const searchInput = document.getElementById("searchInput");
+let products = []; // dari data.js
+let cart = [];
+let wishlist = [];
 
-function renderProducts(productList) {
+function displayProducts() {
+  const grid = document.getElementById("productGrid");
   grid.innerHTML = "";
-  productList.forEach(product => {
-    const link = `https://wa.me/6281234567890?text=Halo%20saya%20ingin%20pesan%20${encodeURIComponent(product.name)}`;
-    grid.innerHTML += `
-      <div class="product-card">
-        <img src="${product.image}" alt="${product.name}">
-        <h2>${product.name}</h2>
-        <p>Rp${product.price.toLocaleString()}</p>
-        <a href="${link}" target="_blank">Beli Sekarang</a>
+  products.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h2>${product.name}</h2>
+      <p>Rp${product.price.toLocaleString()}</p>
+      <div class="buttons">
+        <button onclick="addToCart(${product.id})">🛒</button>
+        <button onclick="addToWishlist(${product.id})">❤️</button>
+        <a href="https://wa.me/6281234567890?text=Saya%20mau%20beli%20${encodeURIComponent(product.name)}" target="_blank">Beli Sekarang</a>
       </div>
     `;
+    grid.appendChild(card);
   });
 }
 
 function filterCategory(category) {
-  const filtered = category === 'All' ? products : products.filter(p => p.category === category);
-  renderProducts(filtered);
+  if (category === "All") {
+    displayProducts();
+  } else {
+    products = allProducts.filter(p => p.category === category);
+    displayProducts();
+  }
 }
 
-searchInput.addEventListener("input", () => {
-  const keyword = searchInput.value.toLowerCase();
-  const filtered = products.filter(p => p.name.toLowerCase().includes(keyword));
-  renderProducts(filtered);
-});
+function addToCart(id) {
+  const item = allProducts.find(p => p.id === id);
+  if (!cart.includes(item)) cart.push(item);
+  alert(`Ditambahkan ke keranjang: ${item.name}`);
+}
+
+function addToWishlist(id) {
+  const item = allProducts.find(p => p.id === id);
+  if (!wishlist.includes(item)) wishlist.push(item);
+  alert(`Ditambahkan ke wishlist: ${item.name}`);
+}
 
 function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
 }
 
-renderProducts(products);
+window.onload = () => {
+  products = allProducts;
+  displayProducts();
+};

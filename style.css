@@ -1,8 +1,13 @@
-body {
-  font-family: sans-serif;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: #f4f4f4;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f8f9fa;
+  color: #333;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -12,21 +17,28 @@ body {
 }
 
 header {
-  background: #333;
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
   color: white;
-  padding: 1rem;
+  padding: 1.2rem;
   text-align: center;
   position: sticky;
   top: 0;
+  z-index: 999;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
 }
 
 #searchInput {
   margin-top: 0.5rem;
-  padding: 0.4rem;
-  width: 80%;
-  max-width: 300px;
-  border-radius: 5px;
+  padding: 0.5rem;
+  width: 85%;
+  max-width: 350px;
+  border-radius: 8px;
   border: none;
+  font-size: 1rem;
 }
 
 nav {
@@ -35,46 +47,75 @@ nav {
 }
 
 nav button {
-  margin: 0 0.3rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  background: #555;
+  margin: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  background: #4e54c8;
   color: white;
-  border-radius: 4px;
+  border: none;
+  border-radius: 25px;
   cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+nav button:hover {
+  background: #2e31a2;
 }
 
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  gap: 1.2rem;
   padding: 1rem;
 }
 
 .product-card {
   background: white;
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   text-align: center;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.3s;
 }
 
 .product-card:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
 }
 
 .product-card img {
   width: 100%;
-  border-radius: 4px;
+  border-radius: 8px;
+}
+
+.product-card h2 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.product-card p {
+  color: #444;
+  margin-bottom: 0.6rem;
 }
 
 .product-card a {
   display: inline-block;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
   padding: 0.5rem 1rem;
-  background: green;
+  background: #00c853;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.product-card a:hover {
+  background: #009624;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #f0f0f0;
+  font-size: 0.85rem;
 }
