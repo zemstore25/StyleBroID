@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Toko Pakaian Keren</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Toko Pakaian Keren</h1>
+    <input type="text" id="searchInput" placeholder="Cari produk...">
+    <button onclick="toggleDarkMode()">🌙</button>
+  </header>
+
+  <nav>
+    <button onclick="filterCategory('All')">Semua</button>
+    <button onclick="filterCategory('Kaos')">Kaos</button>
+    <button onclick="filterCategory('Kemeja')">Kemeja</button>
+    <button onclick="filterCategory('Celana')">Celana</button>
+  </nav>
+
+  <main id="productGrid" class="product-grid"></main>
+
+  <footer>
+    <p>© 2025 Toko Pakaian Keren</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
